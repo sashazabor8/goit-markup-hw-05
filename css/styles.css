@@ -115,21 +115,10 @@ h1,h2,h3,h4,h5,h6, ul, li, button, p {
     align-items: center;
 }
 
-/* .icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 16px;
-    height: 80px;
-    margin-right: 10px;
-  
-} */
-
-/* это дописал------------------------------------- */
 .contacts-list-icon {
     margin-right: 10px;
 }
-/* это дописал------------------------------------- */
+
 
 .nav-list { 
     display: flex;
@@ -169,24 +158,21 @@ h1,h2,h3,h4,h5,h6, ul, li, button, p {
     font-size: 14px;
     line-height: 1.14;
     letter-spacing: 0.02em;
+
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* это дописал------------------------------------- */
+
 .contacts-list .link {
-    color: #757575;;
+    color: #757575;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .contacts-list-icon {
     fill: #757575;
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-/* это дописал------------------------------------- */
 
-/* .contacts-list li {
-    display: flex; */
-    
-    
-    /* align-items: center; */
-    /* padding: 32px 0; */
-/* } */
+
 
 
 
@@ -198,17 +184,16 @@ h1,h2,h3,h4,h5,h6, ul, li, button, p {
     padding-bottom: 32px;
 }
 
-/* .contacts-list li { 
-    display: flex;
 
-} */
 
-/* это дописал          поменял селектор убрал дублирующий ховер по цвету текста------------------------------------ */
+
+
+
 .contacts-list .link:hover .contacts-list-icon,
 .contacts-list .link:focus .contacts-list-icon {
     fill: var(--accent-color);
 }
-/* это дописал------------------------------------- */
+
 .site-header .link:hover,
 .site-header .link:focus {
     color: var(--accent-color);
@@ -403,14 +388,16 @@ h1,h2,h3,h4,h5,h6, ul, li, button, p {
 
 }
 
+
 .workers-card a {
-    display: flex   ;
-        align-items: center;
-        justify-content: center;
-    
-        width: 44px;
-        height: 44px;
-        fill: rgba(175, 177, 184, 1);
+    display: flex  ;
+     align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    fill: rgba(175, 177, 184, 1);
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) ;
 }
 
 .workers-card a:hover,
@@ -484,11 +471,7 @@ h1,h2,h3,h4,h5,h6, ul, li, button, p {
     justify-content: space-between;
 }
 
-/* ЛИбо то лтбо то_________________________________!!!!!!!!!!!!! */
-/* 
-.clients-item:not(:last-child) {
-    margin-right: 30px;
-} */
+
 
 .clients-list .link {
     display: block;
@@ -508,6 +491,8 @@ h1,h2,h3,h4,h5,h6, ul, li, button, p {
     cursor: pointer;
     padding: 16px 32px;
     fill: #AFB1B8;
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1); 
 }
 
 /* Поменял селектор на "при ховере на ссылку для иконки */
@@ -587,6 +572,7 @@ h1,h2,h3,h4,h5,h6, ul, li, button, p {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     fill: var(--primary-white-color);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .appeal .item a:hover,
@@ -651,11 +637,7 @@ h1,h2,h3,h4,h5,h6, ul, li, button, p {
 }
 
 /* ================= Список кнопок================= */
-.button {
-    border-radius: 4px;
-    border: none;
-    padding: 6px 22px 6px 22px;
-}
+
 
 .work-list .container:not(:last-child) {
     padding-top: 94px;
@@ -672,11 +654,20 @@ h1,h2,h3,h4,h5,h6, ul, li, button, p {
 }
 
 .button {
+
+    border-radius: 4px;
+    border: none;
+    padding: 6px 22px 6px 22px;
+    
     font-family: Roboto, sans-serif;
         font-weight: 500;
         font-size: 16px;
         line-height: 1.62;
         letter-spacing: 0.03em;
+
+        cursor: pointer;
+        transition: color  250ms cubic-bezier(0.4, 0, 0.2, 1),
+        background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .button:hover,
 .button:focus {
@@ -711,6 +702,7 @@ h1,h2,h3,h4,h5,h6, ul, li, button, p {
 .portfolio-item {
     width: 370px;
     height: 404px;
+    transition:  box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .portfolio-item:hover {
