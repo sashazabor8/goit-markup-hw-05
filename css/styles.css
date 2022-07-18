@@ -1,11 +1,4 @@
-/* 
-цвет основного текст: #212121;
-вторичный цвет текста: #757575;
-цвет акцента: #2196F3;
-белый: #FFFFFF
-основной цвет фона: #E5E5E5;
-вторичный цвет фона #F5F4FA; 
-*/
+
 
 
 :root { 
@@ -14,6 +7,7 @@
     --accent-color: #2196F3;
     --primary-white-color: #FFFFFF;
     --bacground-black-color: #2F303A;
+    --cubic: cubic-bezier(0.4, 0, 0.2, 1);
 }
 *,
 *::before,
@@ -63,6 +57,77 @@ h1,h2,h3,h4,h5,h6, ul, li, button, p {
     padding-left: 15px;
     padding-right: 15px;
 }
+
+
+/* ================= Модальное окно================= */
+
+.backdrop{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transform: scale(1);
+    
+    background-color: rgba(0, 0, 0, 0.2);
+
+    transition: opacity 500ms var(--cubic);
+}
+
+.backdrop.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal {
+    position: absolute;
+    width: 528px;
+    height: 581px;
+    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+
+    background-color: var(--primary-white-color);
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+    transition: transform 500ms var(--cubic);
+}
+
+.modal-button {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        background-color: var(--primary-white-color);
+}
+
+.modal-button::before {
+    content: '';
+    width: 11px;
+    height: 11px;
+    display: block;
+    background-image: url(../images/close-modal.svg);
+}
+
+
+.backdrop.is-hidden .modal {
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+
+/* ================= END Модальное окно ================= */
+
+
 
 /* ================= Шапка сайта ================= */
 /* ================= Логотип ================= */
@@ -142,6 +207,23 @@ h1,h2,h3,h4,h5,h6, ul, li, button, p {
     color: var(--accent-color);
 }
 
+.current-line {
+    position: relative;
+}
+
+.site-nav .link.current::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+
+    width: 100%;
+    display: block;
+    height: 4px; 
+    
+    border-radius: 2px;
+    background-color: var(--accent-color);
+}
+
 .contacts-list { 
     display: flex;
     margin-left: auto;
@@ -159,23 +241,18 @@ h1,h2,h3,h4,h5,h6, ul, li, button, p {
     line-height: 1.14;
     letter-spacing: 0.02em;
 
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color 250ms var(--cubic);
 }
 
 
 .contacts-list .link {
     color: #757575;
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color 250ms var(--cubic);
 }
 .contacts-list-icon {
     fill: #757575;
-    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: fill 250ms var(--cubic)
 }
-
-
-
-
-
 
 .nav-list .link,
 .contacts-list .link
@@ -183,11 +260,6 @@ h1,h2,h3,h4,h5,h6, ul, li, button, p {
     padding-top: 32px;
     padding-bottom: 32px;
 }
-
-
-
-
-
 
 .contacts-list .link:hover .contacts-list-icon,
 .contacts-list .link:focus .contacts-list-icon {
@@ -248,6 +320,8 @@ h1,h2,h3,h4,h5,h6, ul, li, button, p {
     font-size: 16px;
     line-height: 1.88;
     letter-spacing: 0.06em;
+    border: none;
+    cursor: pointer;
         
 }
 
@@ -332,6 +406,27 @@ h1,h2,h3,h4,h5,h6, ul, li, button, p {
     padding-top: 94px;
 }
 
+.work li {
+    position: relative;
+}
+
+.work-title {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    padding-top: 27px;
+    padding-bottom: 27px;
+  
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: rgba(47, 48, 58, 0.8);
+    color: var(--primary-white-color);
+}
+
 
 
 
@@ -397,7 +492,7 @@ h1,h2,h3,h4,h5,h6, ul, li, button, p {
     width: 44px;
     height: 44px;
     fill: rgba(175, 177, 184, 1);
-    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) ;
+    transition: fill 250ms var(--cubic), background-color 250ms var(--cubic);
 }
 
 .workers-card a:hover,
@@ -491,8 +586,8 @@ h1,h2,h3,h4,h5,h6, ul, li, button, p {
     cursor: pointer;
     padding: 16px 32px;
     fill: #AFB1B8;
-    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    border 250ms cubic-bezier(0.4, 0, 0.2, 1); 
+    transition: fill 250ms var(--cubic),
+    border 250ms var(--cubic); 
 }
 
 /* Поменял селектор на "при ховере на ссылку для иконки */
@@ -572,7 +667,7 @@ h1,h2,h3,h4,h5,h6, ul, li, button, p {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     fill: var(--primary-white-color);
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 250ms var(--cubic);
 }
 
 .appeal .item a:hover,
@@ -666,8 +761,8 @@ h1,h2,h3,h4,h5,h6, ul, li, button, p {
         letter-spacing: 0.03em;
 
         cursor: pointer;
-        transition: color  250ms cubic-bezier(0.4, 0, 0.2, 1),
-        background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: color  250ms var(--cubic),
+        background-color 250ms var(--cubic);
 }
 .button:hover,
 .button:focus {
@@ -702,7 +797,7 @@ h1,h2,h3,h4,h5,h6, ul, li, button, p {
 .portfolio-item {
     width: 370px;
     height: 404px;
-    transition:  box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition:  box-shadow 250ms var(--cubic);
 }
 
 .portfolio-item:hover {
